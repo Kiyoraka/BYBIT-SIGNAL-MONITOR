@@ -322,7 +322,7 @@ class BybitMonitor:
 
     def start_monitoring(self):
         clear_screen()
-        print("\nBybit Futures Signal Monitor - Enhanced Version")
+        print("\nCrypto Short Futures Signal Monitor - Enhanced Version")
         print("=============================================")
         
         # Display active indicators
