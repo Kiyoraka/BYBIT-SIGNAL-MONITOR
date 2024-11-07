@@ -10,7 +10,7 @@ import json
 import os
 import platform
 import subprocess
-
+#checking
 def clear_screen():
     """
     Clear the console screen based on the operating system
