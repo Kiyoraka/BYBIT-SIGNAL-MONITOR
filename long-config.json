@@ -1,0 +1,45 @@
+{
+    "EXCHANGER API": "BYBIT",
+    "api_key": "paste here",
+    "api_secret": "paste here",
+
+    "TECHNICAL INDICATOR 1": "RSI",
+    "rsi_enabled": 1,
+    "rsi_timeframe": "4h",
+    "rsi_period": 7,
+    "rsi_threshold": 10,           
+
+    "TECHNICAL INDICATOR 2": "HEIKIN ASHI",
+    "heikin_ashi_enabled": 1,
+    "consecutive_ha_candles": 3,
+    "heikin_timeframe": "5m",
+
+    "TECHNICAL INDICATOR 3": "MACD",
+    "macd_enabled": 1,
+    "macd_timeframe": "4h",
+    "macd_fast_period": 12,
+    "macd_slow_period": 26,
+    "macd_signal_period": 9,
+    "macd_overbought": -0.3,      
+
+    "TECHNICAL INDICATOR 4": "BOLLINGER BANDS",
+    "bb_enabled": 1,
+    "bb_timeframe": "4h",
+    "bb_period": 20,
+    "bb_std_dev": 2,
+    "bb_percentage_threshold": 5,  
+
+    "TECHNICAL INDICATOR 5": "VOLUME PROFILE",
+    "volume_enabled": 1,
+    "volume_timeframe": "4h",
+    "volume_periods": 24,
+    "volume_threshold": 2.0,
+
+    "GENERAL SETTINGS": "MONITORING",
+    "check_interval": 5,
+    "batch_size": 10,
+    "batch_delay": 2,
+
+    "SIGNAL CONFIGURATION": "REQUIREMENTS",
+    "min_indicators_required": 3 
+}
