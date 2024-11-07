@@ -222,7 +222,7 @@ class BybitMonitor:
             print(f"Error calculating Volume Profile: {str(e)}")
             return None
 
-    def check_symbol(self, symbol): #Checking
+    def check_symbol(self, symbol): 
         try:
             signals = {}
             current_price = None
