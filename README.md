@@ -171,3 +171,13 @@ To stop the monitors:
 ## Disclaimer
 
 This tool is for educational and informational purposes only. Trading cryptocurrencies carries significant risks. Always conduct your own research and consider your risk tolerance before trading.
+
+## Donation
+
+If you like this project and find it useful, just buy me a cup of coffee. Gotta stay caffeinated!
+
+### TRC20 USDT Address
+```
+TYNxYcSTkLqZ7gkT5SNzcLcfwPMddqeNvZ
+```
+
