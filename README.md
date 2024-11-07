@@ -106,7 +106,7 @@ A sophisticated trading signal monitoring system for Futures Market, capable of 
 ## Usage
 
 ### Windows
-1. Double-click the `Bybit Signal Monitor.bat` file
+1. Double-click the `Crypto Signal Monitor.bat` file
 2. Two command windows will open:
    - Long Signal Monitor (Green)
    - Short Signal Monitor (Red)
@@ -114,8 +114,8 @@ A sophisticated trading signal monitoring system for Futures Market, capable of 
 ### Manual Start
 You can also start the monitors individually:
 ```bash
-python Bybit-LSM.py  # For long signals
-python Bybit-SSM.py  # For short signals
+python Crypto-LSM.py  # For long signals
+python Crypto-SSM.py  # For short signals
 ```
 
 ## Signal Conditions
