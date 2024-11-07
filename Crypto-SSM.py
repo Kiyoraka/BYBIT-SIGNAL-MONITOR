@@ -222,7 +222,7 @@ class BybitMonitor:
             print(f"Error calculating Volume Profile: {str(e)}")
             return None
 
-    def check_symbol(self, symbol):
+    def check_symbol(self, symbol): #Checking
         try:
             signals = {}
             current_price = None
@@ -322,7 +322,7 @@ class BybitMonitor:
 
     def start_monitoring(self):
         clear_screen()
-        print("\nBybit Futures Signal Monitor - Enhanced Version")
+        print("\nCrypto Short Futures Signal Monitor - Enhanced Version")
         print("=============================================")
         
         # Display active indicators
