@@ -1,22 +1,42 @@
 @echo off
-title Crypto Trading Monitor
+title Bybit Trading Monitor
 color 0A
 cls
 
-echo Starting Crypto Trading Monitor...
+:: Change to the script's directory
+cd /d "%~dp0"
+
+
+echo.
+echo Starting Bybit Trading Monitor...
 echo ================================
 echo.
 echo Press Ctrl+C to stop the monitor
 echo.
 timeout /t 3
 
-REM Start Short Signal Monitor
-start "SHORT SIGNAL MONITOR" cmd /k "color 0C && title === SHORT SIGNAL MONITOR === && echo. && echo SHORT SIGNAL MONITOR STARTED... && echo ================================ && echo. && python Crypto-SSM.py"
+:: Check if Python scripts exist
+if not exist "Crypto-SSM.py" (
+    echo Error: Crypto-SSM.py not found!
+    echo Please ensure all files are in the same directory.
+    pause
+    exit /b 1
+)
 
-REM Start Long Signal Monitor
-start "LONG SIGNAL MONITOR" cmd /k "color 0A && title === LONG SIGNAL MONITOR === && echo. && echo LONG SIGNAL MONITOR STARTED... && echo ================================ && echo. && python Crypto-LSM.py"
+if not exist "Crypto-LSM.py" (
+    echo Error: Crypto-LSM.py not found!
+    echo Please ensure all files are in the same directory.
+    pause
+    exit /b 1
+)
 
-REM Wait indefinitely without creating new instances
+:: Start Short Signal Monitor with full path
+start "SHORT SIGNAL MONITOR" cmd /k "cd /d "%CD%" && color 0C && title === SHORT SIGNAL MONITOR === && echo. && echo SHORT SIGNAL MONITOR STARTED... && echo ================================ && echo. && python Crypto-SSM.py"
+
+:: Start Long Signal Monitor with full path
+start "LONG SIGNAL MONITOR" cmd /k "cd /d "%CD%" && color 0A && title === LONG SIGNAL MONITOR === && echo. && echo LONG SIGNAL MONITOR STARTED... && echo ================================ && echo. && python Crypto-LSM.py"
+
+:: Wait indefinitely without creating new instances
 :Wait
 timeout /t 60 >nul
 goto Wait
