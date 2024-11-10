@@ -56,7 +56,7 @@ If you prefer to install prerequisites manually:
 ## Configuration
 
 ### API Setup
-1. Create an account on Bybit
+1. Create an account on Bybit : https://partner.bybit.com/b/37065
 2. Generate API keys from your Bybit account
 3. Edit both config files (`long-config.json` and `short-config.json`)
 4. Replace the placeholder values:
