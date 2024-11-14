@@ -6,7 +6,7 @@ A sophisticated trading signal monitoring system for Futures Market, capable of 
 
 - Dual monitoring system for both long and short signals
 - Multiple technical indicators support:
-  - RSI (Relative Strength Index)
+  - RSI (Relative Strength Index) 
   - Heikin Ashi candlesticks
   - MACD (Moving Average Convergence Divergence)
   - Bollinger Bands
