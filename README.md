@@ -30,9 +30,9 @@ A sophisticated trading signal monitoring system for Futures Market, capable of 
 ## File Structure
 
 - `Package Installer.bat` - Automated installer for Python and required packages
-- `Bybit Signal Monitor.bat` - Windows batch file to start both monitors
-- `Bybit-LSM.py` - Long Signal Monitor script
-- `Bybit-SSM.py` - Short Signal Monitor script
+- `Crypto Signal Monitor.bat` - Windows batch file to start both monitors
+- `Crypto-LSM.py` - Long Signal Monitor script
+- `Crypto-SSM.py` - Short Signal Monitor script
 - `long-config.json` - Configuration file for long signals
 - `short-config.json` - Configuration file for short signals
 
