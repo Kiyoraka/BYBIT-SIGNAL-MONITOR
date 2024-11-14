@@ -6,7 +6,7 @@ A sophisticated trading signal monitoring system for Futures Market, capable of 
 
 - Dual monitoring system for both long and short signals
 - Multiple technical indicators support:
-  - RSI (Relative Strength Index)
+  - RSI (Relative Strength Index) 
   - Heikin Ashi candlesticks
   - MACD (Moving Average Convergence Divergence)
   - Bollinger Bands
@@ -38,7 +38,7 @@ A sophisticated trading signal monitoring system for Futures Market, capable of 
 ## Configuration
 
 ### API Setup
-1. Create an account on Bybit
+1. Create an account on Bybit : https://partner.bybit.com/b/37065
 2. Generate API keys from your Bybit account
 3. Edit both config files (`long-config.json` and `short-config.json`)
 4. Replace the placeholder values:
