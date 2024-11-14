@@ -18,8 +18,8 @@ A sophisticated trading signal monitoring system for Futures Market, capable of 
 
 ## Prerequisites
 
-- Python 3.x
-- Required Python packages:
+- Python 3.x (Automatically handled by Package Installer)
+- Required Python packages (Automatically installed):
   ```
   ccxt
   numpy
@@ -29,11 +29,29 @@ A sophisticated trading signal monitoring system for Futures Market, capable of 
 
 ## File Structure
 
-- `Crypto Signal Monitor.bat` - Windows batch file to start both monitors
-- `Crypto-LSM.py` - Long Signal Monitor script
-- `Crypto-SSM.py` - Short Signal Monitor script
+- `Package Installer.bat` - Automated installer for Python and required packages
+- `Bybit Signal Monitor.bat` - Windows batch file to start both monitors
+- `Bybit-LSM.py` - Long Signal Monitor script
+- `Bybit-SSM.py` - Short Signal Monitor script
 - `long-config.json` - Configuration file for long signals
 - `short-config.json` - Configuration file for short signals
+
+## Installation
+
+### Automatic Installation (Recommended)
+1. Run `Package Installer.bat`
+   - Automatically checks for Python installation
+   - Installs Python 3.12.2 if not found
+   - Installs all required packages
+   - Launches the signal monitor automatically when done
+
+### Manual Installation
+If you prefer to install prerequisites manually:
+1. Install Python 3.x
+2. Install required packages:
+   ```bash
+   pip install ccxt numpy pandas ta
+   ```
 
 ## Configuration
 
@@ -105,18 +123,25 @@ A sophisticated trading signal monitoring system for Futures Market, capable of 
 
 ## Usage
 
-### Windows
-1. Double-click the `Crypto Signal Monitor.bat` file
-2. Two command windows will open:
-   - Long Signal Monitor (Green)
-   - Short Signal Monitor (Red)
+### First Time Setup
+1. Run `Package Installer.bat`
+   - This will set up everything you need
+   - Monitor will start automatically when installation is complete
 
-### Manual Start
-You can also start the monitors individually:
-```bash
-python Crypto-LSM.py  # For long signals
-python Crypto-SSM.py  # For short signals
-```
+### Regular Usage
+After installation, you can start the monitor in two ways:
+
+1. Using Batch File (Recommended)
+   - Double-click the `Bybit Signal Monitor.bat` file
+   - Two command windows will open:
+     - Long Signal Monitor (Green)
+     - Short Signal Monitor (Red)
+
+2. Manual Start
+   ```bash
+   python Bybit-LSM.py  # For long signals
+   python Bybit-SSM.py  # For short signals
+   ```
 
 ## Signal Conditions
 
@@ -180,4 +205,3 @@ If you like this project and find it useful, just buy me a cup of coffee. Gotta 
 ```
 TYNxYcSTkLqZ7gkT5SNzcLcfwPMddqeNvZ
 ```
-
