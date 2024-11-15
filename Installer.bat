@@ -75,9 +75,9 @@ echo ---------------------------------------
 echo Python Version: 3.12.2
 echo Required Packages: ccxt, numpy, pandas, ta
 echo.
-echo Starting Crypto Signal Monitor...
+echo Starting Bybit Signal Monitor...
 timeout /t 3 >nul
 
 :: Start the monitor and close this window
-start "" "Crypto Signal Monitor.bat"
+start "" "Bybit Signal Monitor.bat"
 exit
