@@ -6,7 +6,7 @@ cls
 :: Change to script directory
 cd /d "%~dp0"
 
-echo Crypto Trading Bot - Package Installer
+echo Crypto Trading Monitor - Package Installer
 echo ====================================
 echo.
 
