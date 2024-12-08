@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="assets/css/loading-screen.css">
     <link rel="stylesheet" href="assets/css/setting-style.css">
     <link rel="stylesheet" href="assets/css/notification-setting.css">
-
+    <link rel="stylesheet" href="assets/css/theme-styles.css">
 </head>
 <body>
     <!-- Loading Screen -->
@@ -81,248 +81,326 @@
                         <!-- Content for trading simulation will go here -->
                     </div>
                 </div>
+                <!-- Settings Page -->
+                <div class="content-page glass" id="settings-page">
+                    <h1>Settings</h1>
+                    <div class="page-content settings-content">
+                        <!-- Settings Navigation -->
+                        <div class="settings-nav">
+                            <button class="settings-dropdown active" data-target="exchanger-api">
+                                <span>Exchanger API</span>
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                            <button class="settings-dropdown" data-target="technical-indicators">
+                                <span>Technical Indicators</span>
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                            <button class="settings-dropdown" data-target="theme-setting">
+                                <span>Theme Setting</span>
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </div>
 
-            <!-- Settings Page -->
-            <div class="content-page glass" id="settings-page">
-                <h1>Settings</h1>
-                <div class="page-content settings-content">
-                    <!-- Settings Navigation -->
-                    <div class="settings-nav">
-                        <button class="settings-dropdown active" data-target="exchanger-api">
-                            <span>Exchanger API</span>
-                            <i class="fas fa-chevron-right"></i>
-                        </button>
-                        <button class="settings-dropdown" data-target="technical-indicators">
-                            <span>Technical Indicators</span>
-                            <i class="fas fa-chevron-right"></i>
-                        </button>
-                    </div>
-
-                    <!-- Settings Content Areas -->
-                    <div class="settings-content-area">
-                        <!-- Exchanger API Settings -->
-                        <div class="settings-panel active" id="exchanger-api">
-                            <div class="panel-header">
-                                <h2>Exchanger API Configuration</h2>
-                                <p>Configure your exchange API credentials</p>
+                        <!-- Settings Content Areas -->
+                        <div class="settings-content-area">
+                            <!-- Exchanger API Settings -->
+                            <div class="settings-panel active" id="exchanger-api">
+                                <div class="panel-header">
+                                    <h2>Exchanger API Configuration</h2>
+                                    <p>Configure your exchange API credentials</p>
+                                </div>
+                                <div class="panel-content">
+                                    <div class="form-group">
+                                        <label for="exchange-select">Exchange</label>
+                                        <select id="exchange-select" class="form-control">
+                                            <option value="bybit">Bybit</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="api-key">API Key</label>
+                                        <input type="text" id="api-key" class="form-control" placeholder="Enter your API key">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="api-secret">API Secret</label>
+                                        <input type="password" id="api-secret" class="form-control" placeholder="Enter your API secret">
+                                        <button class="toggle-password">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                    </div>
+                                    <div class="button-group">
+                                        <button class="btn btn-primary" id="save-api">Save Changes</button>
+                                        <button class="btn btn-secondary" id="test-api">Test Connection</button>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="panel-content">
-                                <div class="form-group">
-                                    <label for="exchange-select">Exchange</label>
-                                    <select id="exchange-select" class="form-control">
-                                        <option value="bybit">Bybit</option>
-                                    </select>
+                            <!-- Technical Indicators Setting -->
+                            <div id="technical-indicators" class="settings-panel">
+                                <div class="panel-header">
+                                    <h2>Technical Indicators</h2>
+                                    <p>Configure technical analysis parameters</p>
                                 </div>
-                                <div class="form-group">
-                                    <label for="api-key">API Key</label>
-                                    <input type="text" id="api-key" class="form-control" placeholder="Enter your API key">
+                                <div class="panel-content">
+                                    <!-- RSI -->
+                                    <div class="indicator-section">
+                                        <div class="section-header">
+                                            <h3>RSI (Relative Strength Index)</h3>
+                                            <label class="switch">
+                                                <input type="checkbox" id="rsi-enabled" checked>
+                                                <span class="slider round"></span>
+                                            </label>
+                                        </div>
+                                        <div class="indicator-params">
+                                            <div class="form-group">
+                                                <label for="rsi-period">Period</label>
+                                                <input type="number" id="rsi-period" class="form-control" value="7" min="1" max="100">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="rsi-timeframe">Timeframe</label>
+                                                <select id="rsi-timeframe" class="form-control">
+                                                    <option value="1m">1 minute</option>
+                                                    <option value="5m">5 minutes</option>
+                                                    <option value="15m">15 minutes</option>
+                                                    <option value="1h">1 hour</option>
+                                                    <option value="4h" selected>4 hours</option>
+                                                    <option value="1d">1 day</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="rsi-threshold">Threshold</label>
+                                                <input type="number" id="rsi-threshold" class="form-control" value="10" min="0" max="100">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Heikin Ashi -->
+                                    <div class="indicator-section">
+                                        <div class="section-header">
+                                            <h3>Heikin Ashi</h3>
+                                            <label class="switch">
+                                                <input type="checkbox" id="heikin-ashi-enabled" checked>
+                                                <span class="slider round"></span>
+                                            </label>
+                                        </div>
+                                        <div class="indicator-params">
+                                            <div class="form-group">
+                                                <label for="heikin-timeframe">Timeframe</label>
+                                                <select id="heikin-timeframe" class="form-control">
+                                                    <option value="1m">1 minute</option>
+                                                    <option value="5m" selected>5 minutes</option>
+                                                    <option value="15m">15 minutes</option>
+                                                    <option value="1h">1 hour</option>
+                                                    <option value="4h">4 hours</option>
+                                                    <option value="1d">1 day</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="consecutive-candles">Consecutive Candles</label>
+                                                <input type="number" id="consecutive-candles" class="form-control" value="3" min="1" max="10">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- MACD -->
+                                    <div class="indicator-section">
+                                        <div class="section-header">
+                                            <h3>MACD (Moving Average Convergence Divergence)</h3>
+                                            <label class="switch">
+                                                <input type="checkbox" id="macd-enabled" checked>
+                                                <span class="slider round"></span>
+                                            </label>
+                                        </div>
+                                        <div class="indicator-params">
+                                            <div class="form-group">
+                                                <label for="macd-timeframe">Timeframe</label>
+                                                <select id="macd-timeframe" class="form-control">
+                                                    <option value="1m">1 minute</option>
+                                                    <option value="5m">5 minutes</option>
+                                                    <option value="15m">15 minutes</option>
+                                                    <option value="1h">1 hour</option>
+                                                    <option value="4h" selected>4 hours</option>
+                                                    <option value="1d">1 day</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="macd-fast">Fast Period</label>
+                                                <input type="number" id="macd-fast" class="form-control" value="12" min="1" max="50">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="macd-slow">Slow Period</label>
+                                                <input type="number" id="macd-slow" class="form-control" value="26" min="1" max="100">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="macd-signal">Signal Period</label>
+                                                <input type="number" id="macd-signal" class="form-control" value="9" min="1" max="50">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="macd-overbought">Overbought Level</label>
+                                                <input type="number" id="macd-overbought" class="form-control" value="-0.3" step="0.1">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Bollinger Bands -->
+                                    <div class="indicator-section">
+                                        <div class="section-header">
+                                            <h3>Bollinger Bands</h3>
+                                            <label class="switch">
+                                                <input type="checkbox" id="bb-enabled" checked>
+                                                <span class="slider round"></span>
+                                            </label>
+                                        </div>
+                                        <div class="indicator-params">
+                                            <div class="form-group">
+                                                <label for="bb-timeframe">Timeframe</label>
+                                                <select id="bb-timeframe" class="form-control">
+                                                    <option value="1m">1 minute</option>
+                                                    <option value="5m">5 minutes</option>
+                                                    <option value="15m">15 minutes</option>
+                                                    <option value="1h">1 hour</option>
+                                                    <option value="4h" selected>4 hours</option>
+                                                    <option value="1d">1 day</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="bb-period">Period</label>
+                                                <input type="number" id="bb-period" class="form-control" value="20" min="1" max="100">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="bb-std-dev">Standard Deviation</label>
+                                                <input type="number" id="bb-std-dev" class="form-control" value="2" min="0.1" max="5" step="0.1">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="bb-threshold">Percentage Threshold</label>
+                                                <input type="number" id="bb-threshold" class="form-control" value="5" min="0" max="100">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Volume Profile -->
+                                    <div class="indicator-section">
+                                        <div class="section-header">
+                                            <h3>Volume Profile</h3>
+                                            <label class="switch">
+                                                <input type="checkbox" id="volume-enabled" checked>
+                                                <span class="slider round"></span>
+                                            </label>
+                                        </div>
+                                        <div class="indicator-params">
+                                            <div class="form-group">
+                                                <label for="volume-timeframe">Timeframe</label>
+                                                <select id="volume-timeframe" class="form-control">
+                                                    <option value="1m">1 minute</option>
+                                                    <option value="5m">5 minutes</option>
+                                                    <option value="15m">15 minutes</option>
+                                                    <option value="1h">1 hour</option>
+                                                    <option value="4h" selected>4 hours</option>
+                                                    <option value="1d">1 day</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="volume-periods">Periods</label>
+                                                <input type="number" id="volume-periods" class="form-control" value="24" min="1" max="100">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="volume-threshold">Volume Threshold</label>
+                                                <input type="number" id="volume-threshold" class="form-control" value="2.0" min="0.1" max="10" step="0.1">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Action Buttons -->
+                                    <div class="button-group">
+                                        <button id="save-indicators" class="btn btn-primary">Save Changes</button>
+                                        <button id="reset-indicators" class="btn btn-secondary">Reset to Default</button>
+                                    </div>
                                 </div>
-                                <div class="form-group">
-                                    <label for="api-secret">API Secret</label>
-                                    <input type="password" id="api-secret" class="form-control" placeholder="Enter your API secret">
-                                    <button class="toggle-password">
-                                        <i class="fas fa-eye"></i>
-                                    </button>
+                            </div>
+
+                            <!-- Theme Settings -->
+                            <div id="theme-setting" class="settings-panel">
+                                <div class="panel-header">
+                                    <h2>Theme Settings</h2>
+                                    <p>Customize your dashboard appearance</p>
                                 </div>
-                                <div class="button-group">
-                                    <button class="btn btn-primary" id="save-api">Save Changes</button>
-                                    <button class="btn btn-secondary" id="test-api">Test Connection</button>
+
+                                <div class="panel-content">
+                                    <div class="theme-showcase">
+                                        <!-- Default Theme -->
+                                        <div class="theme-option">
+                                            <div class="theme-preview default-theme">
+                                                <div class="preview-header"></div>
+                                                <div class="preview-sidebar"></div>
+                                                <div class="preview-content"></div>
+                                            </div>
+                                            <div class="theme-info">
+                                                <label class="radio-container">
+                                                    <input type="radio" name="theme" value="default" checked>
+                                                    <span class="radio-label">Default</span>
+                                                    <span class="checkmark"></span>
+                                                </label>
+                                                <span class="theme-description">Dark blue gradient with glass effect</span>
+                                            </div>
+                                        </div>
+
+                                        <!-- Dark Theme -->
+                                        <div class="theme-option">
+                                            <div class="theme-preview dark-theme">
+                                                <div class="preview-header"></div>
+                                                <div class="preview-sidebar"></div>
+                                                <div class="preview-content"></div>
+                                            </div>
+                                            <div class="theme-info">
+                                                <label class="radio-container">
+                                                    <input type="radio" name="theme" value="dark">
+                                                    <span class="radio-label">Dark</span>
+                                                    <span class="checkmark"></span>
+                                                </label>
+                                                <span class="theme-description">Pure dark theme with subtle accents</span>
+                                            </div>
+                                        </div>
+
+                                        <!-- Light Theme -->
+                                        <div class="theme-option">
+                                            <div class="theme-preview light-theme">
+                                                <div class="preview-header"></div>
+                                                <div class="preview-sidebar"></div>
+                                                <div class="preview-content"></div>
+                                            </div>
+                                            <div class="theme-info">
+                                                <label class="radio-container">
+                                                    <input type="radio" name="theme" value="light">
+                                                    <span class="radio-label">Light</span>
+                                                    <span class="checkmark"></span>
+                                                </label>
+                                                <span class="theme-description">Clean light theme for better readability</span>
+                                            </div>
+                                        </div>
+
+                                        <!-- Custom Colors -->
+                                        <div class="custom-colors">
+                                            <h4>Custom Accent Color</h4>
+                                            <div class="color-picker-container">
+                                                <input type="color" id="accent-color" value="#4f46e5">
+                                                <label for="accent-color">Primary Color</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Apply Button for Theme -->
+                                    <div class="button-group">
+                                        <button id="apply-theme" class="btn btn-primary">Apply Theme</button>
+                                        <button id="reset-theme" class="btn btn-secondary">Reset to Default</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-
-<!-- Technical Indicators Panel -->
-<div id="technical-indicators" class="settings-panel">
-    <div class="panel-header">
-        <h2>Technical Indicators</h2>
-        <p>Configure technical analysis parameters</p>
-    </div>
-
-    <div class="panel-content">
-        <!-- RSI -->
-        <div class="indicator-section">
-            <div class="section-header">
-                <h3>RSI (Relative Strength Index)</h3>
-                <label class="switch">
-                    <input type="checkbox" id="rsi-enabled" checked>
-                    <span class="slider round"></span>
-                </label>
-            </div>
-            <div class="indicator-params">
-                <div class="form-group">
-                    <label for="rsi-period">Period</label>
-                    <input type="number" id="rsi-period" class="form-control" value="7" min="1" max="100">
-                </div>
-                <div class="form-group">
-                    <label for="rsi-timeframe">Timeframe</label>
-                    <select id="rsi-timeframe" class="form-control">
-                        <option value="1m">1 minute</option>
-                        <option value="5m">5 minutes</option>
-                        <option value="15m">15 minutes</option>
-                        <option value="1h">1 hour</option>
-                        <option value="4h" selected>4 hours</option>
-                        <option value="1d">1 day</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="rsi-threshold">Threshold</label>
-                    <input type="number" id="rsi-threshold" class="form-control" value="10" min="0" max="100">
-                </div>
-            </div>
-        </div>
-
-        <!-- Heikin Ashi -->
-        <div class="indicator-section">
-            <div class="section-header">
-                <h3>Heikin Ashi</h3>
-                <label class="switch">
-                    <input type="checkbox" id="heikin-ashi-enabled" checked>
-                    <span class="slider round"></span>
-                </label>
-            </div>
-            <div class="indicator-params">
-                <div class="form-group">
-                    <label for="heikin-timeframe">Timeframe</label>
-                    <select id="heikin-timeframe" class="form-control">
-                        <option value="1m">1 minute</option>
-                        <option value="5m" selected>5 minutes</option>
-                        <option value="15m">15 minutes</option>
-                        <option value="1h">1 hour</option>
-                        <option value="4h">4 hours</option>
-                        <option value="1d">1 day</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="consecutive-candles">Consecutive Candles</label>
-                    <input type="number" id="consecutive-candles" class="form-control" value="3" min="1" max="10">
-                </div>
-            </div>
-        </div>
-
-        <!-- MACD -->
-        <div class="indicator-section">
-            <div class="section-header">
-                <h3>MACD (Moving Average Convergence Divergence)</h3>
-                <label class="switch">
-                    <input type="checkbox" id="macd-enabled" checked>
-                    <span class="slider round"></span>
-                </label>
-            </div>
-            <div class="indicator-params">
-                <div class="form-group">
-                    <label for="macd-timeframe">Timeframe</label>
-                    <select id="macd-timeframe" class="form-control">
-                        <option value="1m">1 minute</option>
-                        <option value="5m">5 minutes</option>
-                        <option value="15m">15 minutes</option>
-                        <option value="1h">1 hour</option>
-                        <option value="4h" selected>4 hours</option>
-                        <option value="1d">1 day</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="macd-fast">Fast Period</label>
-                    <input type="number" id="macd-fast" class="form-control" value="12" min="1" max="50">
-                </div>
-                <div class="form-group">
-                    <label for="macd-slow">Slow Period</label>
-                    <input type="number" id="macd-slow" class="form-control" value="26" min="1" max="100">
-                </div>
-                <div class="form-group">
-                    <label for="macd-signal">Signal Period</label>
-                    <input type="number" id="macd-signal" class="form-control" value="9" min="1" max="50">
-                </div>
-                <div class="form-group">
-                    <label for="macd-overbought">Overbought Level</label>
-                    <input type="number" id="macd-overbought" class="form-control" value="-0.3" step="0.1">
-                </div>
-            </div>
-        </div>
-
-        <!-- Bollinger Bands -->
-        <div class="indicator-section">
-            <div class="section-header">
-                <h3>Bollinger Bands</h3>
-                <label class="switch">
-                    <input type="checkbox" id="bb-enabled" checked>
-                    <span class="slider round"></span>
-                </label>
-            </div>
-            <div class="indicator-params">
-                <div class="form-group">
-                    <label for="bb-timeframe">Timeframe</label>
-                    <select id="bb-timeframe" class="form-control">
-                        <option value="1m">1 minute</option>
-                        <option value="5m">5 minutes</option>
-                        <option value="15m">15 minutes</option>
-                        <option value="1h">1 hour</option>
-                        <option value="4h" selected>4 hours</option>
-                        <option value="1d">1 day</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="bb-period">Period</label>
-                    <input type="number" id="bb-period" class="form-control" value="20" min="1" max="100">
-                </div>
-                <div class="form-group">
-                    <label for="bb-std-dev">Standard Deviation</label>
-                    <input type="number" id="bb-std-dev" class="form-control" value="2" min="0.1" max="5" step="0.1">
-                </div>
-                <div class="form-group">
-                    <label for="bb-threshold">Percentage Threshold</label>
-                    <input type="number" id="bb-threshold" class="form-control" value="5" min="0" max="100">
-                </div>
-            </div>
-        </div>
-
-        <!-- Volume Profile -->
-        <div class="indicator-section">
-            <div class="section-header">
-                <h3>Volume Profile</h3>
-                <label class="switch">
-                    <input type="checkbox" id="volume-enabled" checked>
-                    <span class="slider round"></span>
-                </label>
-            </div>
-            <div class="indicator-params">
-                <div class="form-group">
-                    <label for="volume-timeframe">Timeframe</label>
-                    <select id="volume-timeframe" class="form-control">
-                        <option value="1m">1 minute</option>
-                        <option value="5m">5 minutes</option>
-                        <option value="15m">15 minutes</option>
-                        <option value="1h">1 hour</option>
-                        <option value="4h" selected>4 hours</option>
-                        <option value="1d">1 day</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="volume-periods">Periods</label>
-                    <input type="number" id="volume-periods" class="form-control" value="24" min="1" max="100">
-                </div>
-                <div class="form-group">
-                    <label for="volume-threshold">Volume Threshold</label>
-                    <input type="number" id="volume-threshold" class="form-control" value="2.0" min="0.1" max="10" step="0.1">
-                </div>
-            </div>
-        </div>
-
-        <!-- Action Buttons -->
-        <div class="button-group">
-            <button id="save-indicators" class="btn btn-primary">Save Changes</button>
-            <button id="reset-indicators" class="btn btn-secondary">Reset to Default</button>
-        </div>
-    </div>
-</div>
                     </div>
                 </div>
-            </div>
             </main>
-
-            
         </div>
     </div>
 
+    <!-- Scripts -->
+    <script src="assets/js/theme-handler.js"></script>
     <script src="assets/js/notification-manager.js"></script>
     <script src="assets/js/API-Settings-Handler.js"></script>
     <script src="assets/js/setting-script.js"></script>
