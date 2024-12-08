@@ -131,72 +131,189 @@
                             </div>
                         </div>
 
-                        <!-- Technical Indicators Settings -->
-                        <div class="settings-panel" id="technical-indicators">
-                            <div class="panel-header">
-                                <h2>Technical Indicators</h2>
-                                <p>Configure technical analysis parameters</p>
-                            </div>
-                            <div class="panel-content">
-                                <!-- RSI Settings -->
-                                <div class="indicator-section">
-                                    <div class="section-header">
-                                        <h3>RSI (Relative Strength Index)</h3>
-                                        <label class="switch">
-                                            <input type="checkbox" id="rsi-enabled" checked>
-                                            <span class="slider round"></span>
-                                        </label>
-                                    </div>
-                                    <div class="indicator-params">
-                                        <div class="form-group">
-                                            <label for="rsi-period">Period</label>
-                                            <input type="number" id="rsi-period" class="form-control" value="14">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="rsi-timeframe">Timeframe</label>
-                                            <select id="rsi-timeframe" class="form-control">
-                                                <option value="1m">1 minute</option>
-                                                <option value="5m">5 minutes</option>
-                                                <option value="15m">15 minutes</option>
-                                                <option value="1h">1 hour</option>
-                                                <option value="4h" selected>4 hours</option>
-                                                <option value="1d">1 day</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
+<!-- Technical Indicators Panel -->
+<div id="technical-indicators" class="settings-panel">
+    <div class="panel-header">
+        <h2>Technical Indicators</h2>
+        <p>Configure technical analysis parameters</p>
+    </div>
 
-                                <!-- MACD Settings -->
-                                <div class="indicator-section">
-                                    <div class="section-header">
-                                        <h3>MACD</h3>
-                                        <label class="switch">
-                                            <input type="checkbox" id="macd-enabled" checked>
-                                            <span class="slider round"></span>
-                                        </label>
-                                    </div>
-                                    <div class="indicator-params">
-                                        <div class="form-group">
-                                            <label for="macd-fast">Fast Period</label>
-                                            <input type="number" id="macd-fast" class="form-control" value="12">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="macd-slow">Slow Period</label>
-                                            <input type="number" id="macd-slow" class="form-control" value="26">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="macd-signal">Signal Period</label>
-                                            <input type="number" id="macd-signal" class="form-control" value="9">
-                                        </div>
-                                    </div>
-                                </div>
+    <div class="panel-content">
+        <!-- RSI -->
+        <div class="indicator-section">
+            <div class="section-header">
+                <h3>RSI (Relative Strength Index)</h3>
+                <label class="switch">
+                    <input type="checkbox" id="rsi-enabled" checked>
+                    <span class="slider round"></span>
+                </label>
+            </div>
+            <div class="indicator-params">
+                <div class="form-group">
+                    <label for="rsi-period">Period</label>
+                    <input type="number" id="rsi-period" class="form-control" value="7" min="1" max="100">
+                </div>
+                <div class="form-group">
+                    <label for="rsi-timeframe">Timeframe</label>
+                    <select id="rsi-timeframe" class="form-control">
+                        <option value="1m">1 minute</option>
+                        <option value="5m">5 minutes</option>
+                        <option value="15m">15 minutes</option>
+                        <option value="1h">1 hour</option>
+                        <option value="4h" selected>4 hours</option>
+                        <option value="1d">1 day</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="rsi-threshold">Threshold</label>
+                    <input type="number" id="rsi-threshold" class="form-control" value="10" min="0" max="100">
+                </div>
+            </div>
+        </div>
 
-                                <div class="button-group">
-                                    <button class="btn btn-primary" id="save-indicators">Save Changes</button>
-                                    <button class="btn btn-secondary" id="reset-indicators">Reset to Default</button>
-                                </div>
-                            </div>
-                        </div>
+        <!-- Heikin Ashi -->
+        <div class="indicator-section">
+            <div class="section-header">
+                <h3>Heikin Ashi</h3>
+                <label class="switch">
+                    <input type="checkbox" id="heikin-ashi-enabled" checked>
+                    <span class="slider round"></span>
+                </label>
+            </div>
+            <div class="indicator-params">
+                <div class="form-group">
+                    <label for="heikin-timeframe">Timeframe</label>
+                    <select id="heikin-timeframe" class="form-control">
+                        <option value="1m">1 minute</option>
+                        <option value="5m" selected>5 minutes</option>
+                        <option value="15m">15 minutes</option>
+                        <option value="1h">1 hour</option>
+                        <option value="4h">4 hours</option>
+                        <option value="1d">1 day</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="consecutive-candles">Consecutive Candles</label>
+                    <input type="number" id="consecutive-candles" class="form-control" value="3" min="1" max="10">
+                </div>
+            </div>
+        </div>
+
+        <!-- MACD -->
+        <div class="indicator-section">
+            <div class="section-header">
+                <h3>MACD (Moving Average Convergence Divergence)</h3>
+                <label class="switch">
+                    <input type="checkbox" id="macd-enabled" checked>
+                    <span class="slider round"></span>
+                </label>
+            </div>
+            <div class="indicator-params">
+                <div class="form-group">
+                    <label for="macd-timeframe">Timeframe</label>
+                    <select id="macd-timeframe" class="form-control">
+                        <option value="1m">1 minute</option>
+                        <option value="5m">5 minutes</option>
+                        <option value="15m">15 minutes</option>
+                        <option value="1h">1 hour</option>
+                        <option value="4h" selected>4 hours</option>
+                        <option value="1d">1 day</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="macd-fast">Fast Period</label>
+                    <input type="number" id="macd-fast" class="form-control" value="12" min="1" max="50">
+                </div>
+                <div class="form-group">
+                    <label for="macd-slow">Slow Period</label>
+                    <input type="number" id="macd-slow" class="form-control" value="26" min="1" max="100">
+                </div>
+                <div class="form-group">
+                    <label for="macd-signal">Signal Period</label>
+                    <input type="number" id="macd-signal" class="form-control" value="9" min="1" max="50">
+                </div>
+                <div class="form-group">
+                    <label for="macd-overbought">Overbought Level</label>
+                    <input type="number" id="macd-overbought" class="form-control" value="-0.3" step="0.1">
+                </div>
+            </div>
+        </div>
+
+        <!-- Bollinger Bands -->
+        <div class="indicator-section">
+            <div class="section-header">
+                <h3>Bollinger Bands</h3>
+                <label class="switch">
+                    <input type="checkbox" id="bb-enabled" checked>
+                    <span class="slider round"></span>
+                </label>
+            </div>
+            <div class="indicator-params">
+                <div class="form-group">
+                    <label for="bb-timeframe">Timeframe</label>
+                    <select id="bb-timeframe" class="form-control">
+                        <option value="1m">1 minute</option>
+                        <option value="5m">5 minutes</option>
+                        <option value="15m">15 minutes</option>
+                        <option value="1h">1 hour</option>
+                        <option value="4h" selected>4 hours</option>
+                        <option value="1d">1 day</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="bb-period">Period</label>
+                    <input type="number" id="bb-period" class="form-control" value="20" min="1" max="100">
+                </div>
+                <div class="form-group">
+                    <label for="bb-std-dev">Standard Deviation</label>
+                    <input type="number" id="bb-std-dev" class="form-control" value="2" min="0.1" max="5" step="0.1">
+                </div>
+                <div class="form-group">
+                    <label for="bb-threshold">Percentage Threshold</label>
+                    <input type="number" id="bb-threshold" class="form-control" value="5" min="0" max="100">
+                </div>
+            </div>
+        </div>
+
+        <!-- Volume Profile -->
+        <div class="indicator-section">
+            <div class="section-header">
+                <h3>Volume Profile</h3>
+                <label class="switch">
+                    <input type="checkbox" id="volume-enabled" checked>
+                    <span class="slider round"></span>
+                </label>
+            </div>
+            <div class="indicator-params">
+                <div class="form-group">
+                    <label for="volume-timeframe">Timeframe</label>
+                    <select id="volume-timeframe" class="form-control">
+                        <option value="1m">1 minute</option>
+                        <option value="5m">5 minutes</option>
+                        <option value="15m">15 minutes</option>
+                        <option value="1h">1 hour</option>
+                        <option value="4h" selected>4 hours</option>
+                        <option value="1d">1 day</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="volume-periods">Periods</label>
+                    <input type="number" id="volume-periods" class="form-control" value="24" min="1" max="100">
+                </div>
+                <div class="form-group">
+                    <label for="volume-threshold">Volume Threshold</label>
+                    <input type="number" id="volume-threshold" class="form-control" value="2.0" min="0.1" max="10" step="0.1">
+                </div>
+            </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="button-group">
+            <button id="save-indicators" class="btn btn-primary">Save Changes</button>
+            <button id="reset-indicators" class="btn btn-secondary">Reset to Default</button>
+        </div>
+    </div>
+</div>
                     </div>
                 </div>
             </div>
