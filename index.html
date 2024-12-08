@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trading Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/loading-screen.css">
+</head>
+<body>
+    <div class="background"></div>
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar glass">
+            <div class="sidebar-header">
+                <div class="logo-container">
+                    <img src="assets/img/logo.png" alt="Trading Bot Logo" class="logo">
+                    <h2>Trading Bot</h2>
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item active" data-page="main">
+                    <i class="fas fa-home"></i>
+                    <span>Main</span>
+                </a>
+                <a href="#" class="nav-item" data-page="signal">
+                    <i class="fas fa-bell"></i>
+                    <span>Signal</span>
+                </a>
+                <a href="#" class="nav-item" data-page="simulation">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Trading Simulation</span>
+                </a>
+                <a href="#" class="nav-item" data-page="settings">
+                    <i class="fas fa-cog"></i>
+                    <span>Settings</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Main Page -->
+            <div class="content-page glass active" id="main-page">
+                <h1>Main Dashboard</h1>
+                <div class="page-content">
+                    <!-- Content for main page will go here -->
+                </div>
+            </div>
+
+            <!-- Signal Page -->
+            <div class="content-page glass" id="signal-page">
+                <h1>Signal Monitor</h1>
+                <div class="page-content">
+                    <!-- Content for signal page will go here -->
+                </div>
+            </div>
+
+            <!-- Trading Simulation Page -->
+            <div class="content-page glass" id="simulation-page">
+                <h1>Trading Simulation System</h1>
+                <div class="page-content">
+                    <!-- Content for trading simulation will go here -->
+                </div>
+            </div>
+
+            <!-- Settings Page -->
+            <div class="content-page glass" id="settings-page">
+                <h1>Settings</h1>
+                <div class="page-content">
+                    <!-- Content for settings page will go here -->
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="assets/js/script.js"></script>
+</body>
+</html>
