@@ -6,11 +6,7 @@ class LoadingScreen {
         this.loadingText = document.querySelector('.loading-text');
         this.progress = 0;
         this.loadingTexts = [
-            'Initializing Trading Bot...',
-            'Loading Configuration...',
-            'Connecting to Exchange...',
-            'Loading Market Data...',
-            'Preparing Dashboard...'
+            'Initializing Trading System...'
         ];
         this.currentTextIndex = 0;
     }
