@@ -68,7 +68,9 @@ body {
     padding: 1.5rem;
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 1rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
 }
 
 .sidebar-header {
