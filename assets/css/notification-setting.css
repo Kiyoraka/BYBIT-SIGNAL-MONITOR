@@ -1,15 +1,22 @@
-/* Notification Styles */
-.notification {
+/* Notification Container */
+.notification-container {
     position: fixed;
     top: 20px;
     right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 1000;
+}
+
+.notification {
     padding: 15px 25px;
     border-radius: 8px;
     color: white;
     font-weight: 500;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    z-index: 1000;
-    animation: slideIn 0.3s ease, fadeOut 0.3s ease 2.7s;
+    animation: slideIn 0.3s ease;
+    min-width: 300px;
 }
 
 .notification.success {
@@ -28,6 +35,10 @@
     background-color: #2196f3;
 }
 
+.notification.fade-out {
+    animation: fadeOut 0.3s ease forwards;
+}
+
 @keyframes slideIn {
     from {
         transform: translateX(100%);
@@ -41,9 +52,11 @@
 
 @keyframes fadeOut {
     from {
+        transform: translateX(0);
         opacity: 1;
     }
     to {
+        transform: translateX(100%);
         opacity: 0;
     }
 }

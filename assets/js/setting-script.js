@@ -71,7 +71,6 @@ class SettingsManager {
 
         // API Form Event Listeners
         this.apiForm.saveButton.addEventListener('click', () => this.saveApiSettings());
-        this.apiForm.testButton.addEventListener('click', () => this.testApiConnection());
         this.apiForm.togglePassword.addEventListener('click', () => this.togglePasswordVisibility());
 
         // Technical Indicators Event Listeners
@@ -150,23 +149,7 @@ class SettingsManager {
         }
     }
 
-    async testApiConnection() {
-        try {
-            this.apiForm.testButton.disabled = true;
-            this.apiForm.testButton.innerHTML = 'Testing...';
 
-            // Simulate API connection test
-            await new Promise(resolve => setTimeout(resolve, 1500));
-
-            this.showNotification('API connection successful', 'success');
-        } catch (error) {
-            console.error('API connection test failed:', error);
-            this.showNotification('API connection failed', 'error');
-        } finally {
-            this.apiForm.testButton.disabled = false;
-            this.apiForm.testButton.innerHTML = 'Test Connection';
-        }
-    }
 
     togglePasswordVisibility() {
         const type = this.apiForm.secret.type === 'password' ? 'text' : 'password';
@@ -281,18 +264,7 @@ class SettingsManager {
     }
 
     showNotification(message, type = 'info') {
-        // Create notification element
-        const notification = document.createElement('div');
-        notification.className = `notification ${type}`;
-        notification.innerHTML = message;
-
-        // Add to document
-        document.body.appendChild(notification);
-
-        // Remove after delay
-        setTimeout(() => {
-            notification.remove();
-        }, 3000);
+        window.notificationManager.show(message, type);
     }
 }
 

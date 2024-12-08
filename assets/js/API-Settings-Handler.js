@@ -1,13 +1,12 @@
 class APISettings {
     constructor() {
-        this.API_BASE_URL = 'http://localhost:5000/api';  // Update this to match your server
+        this.API_BASE_URL = 'http://localhost:5000/api';
         this.initializeElements();
         this.attachEventListeners();
         this.loadExistingCredentials();
     }
 
     initializeElements() {
-        // Get form elements
         this.apiKeyInput = document.getElementById('api-key');
         this.apiSecretInput = document.getElementById('api-secret');
         this.saveButton = document.getElementById('save-api');
@@ -15,9 +14,16 @@ class APISettings {
         this.togglePasswordButton = document.querySelector('.toggle-password');
     }
 
+    showNotification(message, type) {
+        window.notificationManager.show(message, type);
+    }
+    
     attachEventListeners() {
         // Save API credentials
-        this.saveButton.addEventListener('click', async () => {
+        this.saveButton.addEventListener('click', async (e) => {
+            // Prevent default form submission behavior
+            e.preventDefault();
+            
             const apiKey = this.apiKeyInput.value.trim();
             const apiSecret = this.apiSecretInput.value.trim();
 
@@ -25,6 +31,10 @@ class APISettings {
                 this.showNotification('Please fill in all API fields', 'warning');
                 return;
             }
+
+            // Disable save button while processing
+            this.saveButton.disabled = true;
+            this.saveButton.innerHTML = 'Saving...';
 
             try {
                 const response = await fetch(`${this.API_BASE_URL}/save_credentials`, {
@@ -48,11 +58,18 @@ class APISettings {
             } catch (error) {
                 console.error('Error saving credentials:', error);
                 this.showNotification('Error saving API credentials', 'error');
+            } finally {
+                // Re-enable save button and restore text
+                this.saveButton.disabled = false;
+                this.saveButton.innerHTML = 'Save Changes';
             }
         });
 
         // Test API connection
-        this.testButton.addEventListener('click', async () => {
+        this.testButton.addEventListener('click', async (e) => {
+            // Prevent default form submission behavior
+            e.preventDefault();
+            
             const apiKey = this.apiKeyInput.value.trim();
             const apiSecret = this.apiSecretInput.value.trim();
 
@@ -92,7 +109,8 @@ class APISettings {
         });
 
         // Toggle password visibility
-        this.togglePasswordButton.addEventListener('click', () => {
+        this.togglePasswordButton.addEventListener('click', (e) => {
+            e.preventDefault();
             const type = this.apiSecretInput.type === 'password' ? 'text' : 'password';
             this.apiSecretInput.type = type;
             
@@ -120,16 +138,6 @@ class APISettings {
         }
     }
 
-    showNotification(message, type = 'info') {
-        const notification = document.createElement('div');
-        notification.className = `notification ${type}`;
-        notification.innerHTML = message;
-        document.body.appendChild(notification);
-        
-        setTimeout(() => {
-            notification.remove();
-        }, 3000);
-    }
 }
 
 // Initialize API Settings when document is loaded
