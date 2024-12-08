@@ -1,0 +1,32 @@
+/* Footer Styles */
+.sidebar-footer {
+    margin-top: auto;
+    padding: 1.5rem 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.875rem;
+    text-align: center;
+}
+
+.sidebar-footer p {
+    margin: 0;
+    line-height: 1.4;
+}
+
+.copyright {
+    display: block;
+    font-size: 0.75rem;
+    margin-top: 0.25rem;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/* Update sidebar to accommodate footer */
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.sidebar-nav {
+    flex: 1;
+}

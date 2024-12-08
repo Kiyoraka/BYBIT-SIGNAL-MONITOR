@@ -2,8 +2,9 @@
 .settings-content {
     display: flex;
     gap: 2rem;
-    padding: 1rem;
+    padding: 0;
     height: calc(100vh - 200px);
+    width: 100%;
 }
 
 /* Settings Navigation */
@@ -16,6 +17,7 @@
     padding: 1rem;
     border-radius: 12px;
     height: fit-content;
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .settings-dropdown {
@@ -43,11 +45,14 @@
 /* Settings Content Area */
 .settings-content-area {
     flex: 1;
+    display: flex;
+    flex-direction: column;
     background: rgba(255, 255, 255, 0.05);
     border-radius: 12px;
     padding: 2rem;
     overflow-y: auto;
     max-height: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .settings-panel {
@@ -55,10 +60,13 @@
     background: rgba(255, 255, 255, 0.05);
     border-radius: 12px;
     padding: 2rem;
+    height: 100%;
+    overflow-y: auto;
 }
 
 .settings-panel.active {
-    display: block;
+    display: flex;
+    flex-direction: column;
 }
 
 .panel-header {
@@ -83,6 +91,7 @@
     padding: 1.5rem;
     border-radius: 8px;
     margin-bottom: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .form-group label {
@@ -178,21 +187,25 @@
 }
 
 /* Scrollbar Styles */
-.settings-content-area::-webkit-scrollbar {
+.settings-content-area::-webkit-scrollbar,
+.settings-panel::-webkit-scrollbar {
     width: 8px;
 }
 
-.settings-content-area::-webkit-scrollbar-track {
+.settings-content-area::-webkit-scrollbar-track,
+.settings-panel::-webkit-scrollbar-track {
     background: rgba(255, 255, 255, 0.05);
     border-radius: 4px;
 }
 
-.settings-content-area::-webkit-scrollbar-thumb {
+.settings-content-area::-webkit-scrollbar-thumb,
+.settings-panel::-webkit-scrollbar-thumb {
     background: rgba(255, 255, 255, 0.1);
     border-radius: 4px;
 }
 
-.settings-content-area::-webkit-scrollbar-thumb:hover {
+.settings-content-area::-webkit-scrollbar-thumb:hover,
+.settings-panel::-webkit-scrollbar-thumb:hover {
     background: rgba(255, 255, 255, 0.2);
 }
 
